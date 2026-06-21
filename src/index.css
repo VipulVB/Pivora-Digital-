@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-border-primary: var(--border-primary);
+  --color-glow-primary: var(--glow-primary);
+}
+
+/* Global Transition Rules for Theme Switching */
+*, *::before, *::after {
+  transition-property: background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+
+/* Specific fast-path rules */
+.no-transition {
+  transition: none !important;
+}
+
+/* Root Custom Variables per Theme */
+
+/* Default / Dark Theme Theme-Switcher - matte black, cyan, electric blue */
+:root, [data-theme="dark"] {
+  --bg-primary: #020617; /* Slate 950 deep space slate */
+  --bg-secondary: #0a0f1d; /* Slate 900 plus custom blur opacity */
+  --bg-tertiary: #131b2e; /* Saturated slate */
+  --text-primary: #f8fafc; /* High contrast text-slate-100 fallback */
+  --text-secondary: #94a3b8; /* Slate-400 styling */
+  --accent-primary: #22d3ee; /* Cyan 400 neon */
+  --accent-secondary: #3b82f6; /* Electric Blue */
+  --border-primary: rgba(255, 255, 255, 0.1); /* White/10 border lines */
+  --glow-primary: rgba(34, 211, 238, 0.15); /* Sleek immersive glow drop */
+}
+
+/* Light Mode - clean white, soft silver, blue accents */
+[data-theme="light"] {
+  --bg-primary: #FAFBFD;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #EFF3F8;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --accent-primary: #2563EB; /* Premium Royal Blue */
+  --accent-secondary: #0EA5E9; /* Cyan */
+  --border-primary: rgba(15, 23, 42, 0.08);
+  --glow-primary: rgba(37, 99, 235, 0.08);
+}
+
+/* Cyber Mode - black, neon cyan, purple glow */
+[data-theme="cyber"] {
+  --bg-primary: #020008;
+  --bg-secondary: #070114;
+  --bg-tertiary: #120324;
+  --text-primary: #00FFCC; /* Cyber Teal */
+  --text-secondary: #C084FC; /* Purple/Lavender */
+  --accent-primary: #00F0FF; /* Neon Cyan */
+  --accent-secondary: #A855F7; /* Neon Purple */
+  --border-primary: rgba(0, 240, 255, 0.18);
+  --glow-primary: rgba(168, 85, 247, 0.25);
+}
+
+/* Luxury Mode - deep navy, champagne gold, ivory */
+[data-theme="luxury"] {
+  --bg-primary: #0B0E14; /* Deep Navy */
+  --bg-secondary: #131722;
+  --bg-tertiary: #1E2333;
+  --text-primary: #FDFBF7; /* Ivory */
+  --text-secondary: #94A3B8;
+  --accent-primary: #E5C158; /* Champagne Gold Gold */
+  --accent-secondary: #C5A03A; /* Slightly deeper gold */
+  --border-primary: rgba(229, 193, 88, 0.18);
+  --glow-primary: rgba(229, 193, 88, 0.15);
+}
+
+/* Minimal Mode - white, graphite, subtle blue */
+[data-theme="minimal"] {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F6F8FA;
+  --bg-tertiary: #EEF1F4;
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --accent-primary: #1C2333; /* Dark Slate Graphites */
+  --accent-secondary: #64748B; /* Slate Gray */
+  --border-primary: rgba(0, 0, 0, 0.12);
+  --glow-primary: rgba(94, 109, 122, 0.08);
+}
+
+/* Custom Scrollbar for premium polished feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Smooth Scrolling Anchor support */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* Beautiful noise background for futuristic look */
+.bg-noise {
+  background-image: radial-gradient(var(--border-primary) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
